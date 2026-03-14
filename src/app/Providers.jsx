@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect } from 'react';
-import { AuthModalProvider } from '../context/AuthModalContext.jsx';
-import { HomeStateProvider } from '../context/HomeStateContext.jsx';
-import { BrandingProvider } from '../context/BrandingContext.jsx';
+import { AuthModalProvider } from '../context/AuthModalContext';
+import { HomeStateProvider } from '../context/HomeStateContext';
+import { BrandingProvider } from '../context/BrandingContext';
 import { Toaster } from 'react-hot-toast';
-import LoginModal from '../components/modals/LoginModal.jsx';
-import FloatingConsole from '../components/ui/FloatingConsole.jsx';
-import { startIngestionWorker } from '../api/schedule.js';
-import { fixMissingCloudinaryImages } from '../api/articles.js';
+import LoginModal from '../components/modals/LoginModal';
+import FloatingConsole from '../components/ui/FloatingConsole';
+import { startIngestionWorker } from '../api/schedule';
+import { fixMissingCloudinaryImages } from '../api/articles';
 import { usePathname } from 'next/navigation';
 
 export default function Providers({ children }) {

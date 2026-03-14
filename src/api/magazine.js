@@ -1,4 +1,4 @@
-import { supabase } from '../supabase.js';
+import { supabase } from '../supabase';
 
 // Helper: given a list of articles with category_slug, join category data
 
