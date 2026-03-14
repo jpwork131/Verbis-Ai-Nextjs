@@ -1,11 +1,11 @@
-import ArticleDetail from '../../../views/ArticleDetail';
-import { supabase } from '../../../supabase';
-import MarketNewsWidget from '../../../components/magazine/MarketNewsWidget';
-import StartupEcosystemWidget from '../../../components/magazine/StartupEcosystemWidget';
+import ArticleDetail from '@/views/ArticleDetail';
+import { supabase } from '@/supabase';
+import MarketNewsWidget from '@/components/magazine/MarketNewsWidget';
+import StartupEcosystemWidget from '@/components/magazine/StartupEcosystemWidget';
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  
+
   if (!slug) return {};
 
   try {
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }) {
         try {
           const parsed = JSON.parse(article.seo_keywords);
           keywords = Array.isArray(parsed) ? parsed.join(', ') : article.seo_keywords;
-        } catch(e) {
+        } catch (e) {
           keywords = article.seo_keywords;
         }
       }
@@ -73,13 +73,13 @@ export async function generateMetadata({ params }) {
   } catch (err) {
     console.error('Local SEO generation error:', err);
   }
-  
+
   return {};
 }
 
 export default function Page() {
   return (
-    <ArticleDetail 
+    <ArticleDetail
       marketNewsWidget={<MarketNewsWidget />}
       startupWidget={<StartupEcosystemWidget />}
     />
