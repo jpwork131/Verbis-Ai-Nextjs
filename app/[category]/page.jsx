@@ -1,4 +1,4 @@
-import CategoryView from '../../views/CategoryView.jsx';
+import CategoryView from '@views/CategoryView';
 
 export async function generateMetadata({ params }) {
   const { category } = await params;
