@@ -6,8 +6,8 @@ import { BrandingProvider } from '@/context/BrandingContext.jsx';
 import { Toaster } from 'react-hot-toast';
 import LoginModal from '@/components/modals/LoginModal.jsx';
 import FloatingConsole from '@/components/ui/FloatingConsole.jsx';
-import { startIngestionWorker } from '@api/schedule.js';
-import { fixMissingCloudinaryImages } from '@api/articles.js';
+import { startIngestionWorker } from '@/api/schedule.js';
+import { fixMissingCloudinaryImages } from '@/api/articles.js';
 import { usePathname } from 'next/navigation';
 
 export default function Providers({ children }) {
