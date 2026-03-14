@@ -1,7 +1,7 @@
-import ArticleDetail from '../../../views/ArticleDetail';
-import { supabase } from '../../../supabase';
-import MarketNewsWidget from '../../../components/magazine/MarketNewsWidget';
-import StartupEcosystemWidget from '../../../components/magazine/StartupEcosystemWidget';
+import ArticleDetail from '@views/ArticleDetail';
+import { supabase } from '@supabase';
+import MarketNewsWidget from '@components/magazine/MarketNewsWidget';
+import StartupEcosystemWidget from '@components/magazine/StartupEcosystemWidget';
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
