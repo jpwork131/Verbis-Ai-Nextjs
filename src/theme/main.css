@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* 1. Standard Tailwind v4 Theme Block */
+@theme {
+  /* Editorial Color Palette */
+  --color-ink: #0f172a;
+  --color-paper: #ffffff;
+  --color-surface: #f8fafc;
+  --color-accent: #2563eb;
+  --color-muted: #64748b;
+  --color-border: #e2e8f0;
+
+  /* Typography */
+  --font-serif: "Playfair Display", "Ibarra Real Nova", serif;
+  --font-sans: "Source Sans 3", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+/* 2. Scoped Styling & Dark Mode Logic */
+@layer base {
+  /* Apply to the admin section specifically */
+  .admin-theme {
+    @apply antialiased transition-colors duration-300;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  /* Headings only inside admin-theme */
+  .admin-theme h1, 
+  .admin-theme h2, 
+  .admin-theme h3, 
+  .admin-theme h4 {
+    @apply font-serif font-black tracking-tight;
+  }
+
+  /* Manual Dark Mode Mapping for the Scoped Container */
+  .admin-theme.dark {
+    --color-ink: #f8fafc;
+    --color-paper: #0b1120;
+    --color-surface: #1e293b;
+    --color-accent: #6366f1;
+    --color-muted: #94a3b8;
+    --color-border: #1e293b;
+    
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+}
+
+/* 3. Article Content Styling */
+.blog-content {
+  @apply mx-auto;
+}
+
+.blog-content h2, .blog-content h3 {
+  @apply scroll-mt-32;
+}
+
+.blog-content p {
+  @apply mb-8 last:mb-0;
+}
+
+.blog-content img {
+  @apply transition-transform duration-500 hover:scale-[1.02];
+}
+
+/* Custom list styling if prose defaults aren't enough */
+.blog-content ul {
+  @apply space-y-3 mb-8;
+}
+
+.blog-content li {
+  @apply relative pl-2;
+}
+
+/* 4. Smooth scrolling for the whole app */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 5. Magazine-specific animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* Animated underline for title hover (global) */
+.mag-title-hover {
+  position: relative;
+  display: inline;
+}
+.mag-title-hover::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #dc2626;
+  transition: width 0.3s ease;
+}
+.mag-title-hover:hover::after {
+  width: 100%;
+}
+
+/* Scrollbar styles for Most Read section */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

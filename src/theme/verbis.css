@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-accent: #0EA5E9;          /* Verbis Blue */
+  --color-accent-dark: #0369A1;     
+  --color-accent-light: #E0F2FE;    
+  --color-bg: #F8FAFC;              
+  --color-surface: #FFFFFF;         
+  --color-border: #E2E8F0;          
+  --color-text-primary: #0F172A;    
+  --color-text-secondary: #475569;  
+  --color-text-muted: #94A3B8;      
+  --color-nav-bg: #FFFFFF;          
+  --color-footer-bg: #0F172A;       
+
+  --font-display: 'Source Serif 4', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+.verbis-theme {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+.verbis-theme h1, 
+.verbis-theme h2, 
+.verbis-theme h3, 
+.verbis-theme .font-display {
+  font-family: var(--font-display);
+}
+
+.verbis-theme .text-accent { color: var(--color-accent); }
+.verbis-theme .bg-accent { background-color: var(--color-accent); }
+.verbis-theme .border-accent { border-color: var(--color-accent); }
+
+.verbis-theme .verbis-card {
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.3s ease;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: white;
+  border: 1px solid var(--color-border);
+}
+
+.verbis-theme .verbis-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(14,165,233,0.3);
+  border-color: var(--color-accent-light);
+}
+
+.verbis-theme .explore-btn {
+  transition: all 0.3s ease;
+  background: white;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.verbis-theme .explore-btn:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+  box-shadow: 0 4px 12px rgba(14,165,233,0.2);
+}
