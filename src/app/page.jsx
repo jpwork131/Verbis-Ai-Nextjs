@@ -1,10 +1,5 @@
-import EntrackrHomepage from '@views/EntrackrHomepage';
-import MarketNewsWidget from '@components/magazine/MarketNewsWidget';
+import EntrackrHomepage from '../views/EntrackrHomepage';
 
 export default function Page() {
-  return (
-    <EntrackrHomepage 
-      marketNewsWidget={<MarketNewsWidget />} 
-    />
-  );
+  return <EntrackrHomepage />;
 }
