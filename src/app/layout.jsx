@@ -1,7 +1,7 @@
-import '../theme/main.css';
-import '../theme/App.css';
-import '../theme/verbis.css';
-import ClientProviders from './ClientProviders';
+import '@theme/main.css';
+import '@theme/App.css';
+import '@theme/verbis.css';
+import ClientProviders from './ClientProviders.jsx';
 
 export const metadata = {
   title: 'AI News | Future of Tech',
