@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { useAuthModal } from "../../context/AuthModalContext";
-import { loginUser } from "../../api/auth";
+import { useAuthModal } from '@/contexts/AuthModalContext';
+import { loginUser } from '@/services/auth';
 import Link from 'next/link';
 import { X } from "lucide-react";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useHomeState } from "../context/HomeStateContext";
+import { useHomeState } from '../contexts/HomeStateContext';
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 

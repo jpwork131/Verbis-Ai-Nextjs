@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Clock, TrendingUp } from "lucide-react";
-import { getMostReadPosts } from "../../api/magazine";
+import { getMostReadPosts } from '@/services/magazine';
 
 const containerVariants = {
   hidden: {},

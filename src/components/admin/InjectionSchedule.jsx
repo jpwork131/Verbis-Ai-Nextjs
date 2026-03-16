@@ -11,13 +11,13 @@ import {
   Calendar,
   Database
 } from "lucide-react";
-import { getCategories } from "../../api/articles";
+import { getCategories } from '@/services/articles';
 import {
   createSchedule,
   deleteSchedule,
   getActiveSchedules,
   runIngestionForActiveSchedules
-} from "../../api/schedule";
+} from '@/services/schedule';
 
 const InjectionSchedule = () => {
   const [rules, setRules] = useState([]);

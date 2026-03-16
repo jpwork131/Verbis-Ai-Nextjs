@@ -1,8 +1,8 @@
 "use client";
 import { Bookmark, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion"; 
-import { likeArticle, saveArticle } from "../../api/articles";
-import useloginCheck from "../../hooks/LoginCheck";
+import { likeArticle, saveArticle } from '@/services/articles';
+import useloginCheck from '@/hooks/LoginCheck';
 
 const ArticleActions = ({ article, onUpdate }) => {
   const checkLogin = useloginCheck();

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../../supabase';
+import { supabase } from '@/lib/supabase';
 import { ShieldCheck, Trash2, Search, Mail, Calendar } from 'lucide-react';
 
 const AdminUsers = () => {

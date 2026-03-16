@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Plus, Tag, Search, Activity, Trash2, Edit3, X, Save, Globe, Link, AlertTriangle, Terminal } from 'lucide-react';
-import categoryApi from '../../api/categories';
+import categoryApi from '@/services/categories';
 
 const CategoryManager = () => {
   const [categories, setCategories] = useState([]);
@@ -9,7 +9,25 @@ const CategoryManager = () => {
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(null);
   // slug to formData
-  const [formData, setFormData] = useState({ name: '', slug: '', searchQuery: '', isActive: true });
+  const [formData, setFormData] = useState({ name: '', slug: '', searchQuery: '', isActive: true, badgeColor: '#3b82f6' });
+
+  const PRESET_COLORS = [
+    { name: 'Blue', hex: '#3b82f6' },
+    { name: 'Pink', hex: '#ec4899' },
+    { name: 'Amber', hex: '#f59e0b' },
+    { name: 'Emerald', hex: '#10b981' },
+    { name: 'Indigo', hex: '#6366f1' },
+    { name: 'Red', hex: '#ef4444' },
+    { name: 'Violet', hex: '#8b5cf6' },
+    { name: 'Cyan', hex: '#06b6d4' },
+    { name: 'Rose', hex: '#f43f5e' },
+    { name: 'Teal', hex: '#14b8a6' },
+    { name: 'Lime', hex: '#84cc16' },
+    { name: 'Yellow', hex: '#fbbf24' },
+    { name: 'Sky', hex: '#0ea5e9' },
+    { name: 'Fuchsia', hex: '#d946ef' },
+    { name: 'Slate', hex: '#64748b' },
+  ];
 
   // Migration State
   const [showMigrationModal, setShowMigrationModal] = useState(false);
@@ -36,11 +54,12 @@ const CategoryManager = () => {
         name: category.name, 
         slug: category.slug, // Map existing slug
         searchQuery: category.searchQuery, 
-        isActive: category.isActive 
+        isActive: category.isActive,
+        badgeColor: category.badgeColor || '#3b82f6'
       });
     } else {
       setIsEditing(null);
-      setFormData({ name: '', slug: '', searchQuery: '', isActive: true });
+      setFormData({ name: '', slug: '', searchQuery: '', isActive: true, badgeColor: '#3b82f6' });
     }
     setShowModal(true);
   };
@@ -153,7 +172,13 @@ const CategoryManager = () => {
               <tr key={cat._id} className="hover:bg-accent/2 transition-colors group">
                 <td className="px-8 py-6">
                   <div className="flex flex-col gap-1">
-                    <p className="font-bold text-ink text-lg tracking-tight">{cat.name}</p>
+                    <div className="flex items-center gap-2">
+                      <span 
+                        className="w-3 h-3 rounded-full" 
+                        style={{ backgroundColor: cat.badgeColor || '#3b82f6' }}
+                      />
+                      <p className="font-bold text-ink text-lg tracking-tight">{cat.name}</p>
+                    </div>
                     <div className="flex items-center gap-2">
                       <Terminal size={10} className="text-accent" />
                       <code className="text-[10px] font-mono text-accent font-bold uppercase tracking-tighter bg-accent/5 px-2 py-0.5 rounded">
@@ -237,6 +262,24 @@ const CategoryManager = () => {
                   placeholder='e.g. "Artificial Intelligence" OR "OpenAI"'
                   required
                 />
+              </div>
+
+              <div className="space-y-3">
+                <label className="text-[10px] font-black text-muted uppercase tracking-[0.2em] flex items-center gap-2 ml-1">
+                  <div className="w-3 h-3 rounded-full bg-accent" /> Badge Color
+                </label>
+                <div className="grid grid-cols-5 gap-2 p-2 bg-surface border border-border rounded-2xl">
+                  {PRESET_COLORS.map((color) => (
+                    <button
+                      key={color.hex}
+                      type="button"
+                      onClick={() => setFormData({ ...formData, badgeColor: color.hex })}
+                      className={`h-8 rounded-lg transition-all ${formData.badgeColor === color.hex ? 'ring-2 ring-accent ring-offset-2 scale-90' : 'hover:scale-105'}`}
+                      style={{ backgroundColor: color.hex }}
+                      title={color.name}
+                    />
+                  ))}
+                </div>
               </div>
 
               <div className="flex gap-4 pt-4">

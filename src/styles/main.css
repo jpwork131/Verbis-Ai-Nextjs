@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Dynamic Theme Variables */
+  --color-bg-primary: var(--bg-primary);
+  --color-text-primary: var(--text-primary);
+  --color-card-bg: var(--card-bg);
+  --color-border-primary: var(--border-primary);
+  --color-accent: #dc2626; /* News red */
+  
+  /* Typography */
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", "Source Sans 3", sans-serif;
+}
+
+:root {
+  --bg-primary: #ffffff;
+  --text-primary: #000000;
+  --card-bg: #f3f4f6; /* gray-100 */
+  --border-primary: #e5e7eb; /* gray-200 */
+}
+
+@layer base {
+  body {
+    @apply bg-bg-primary text-text-primary antialiased transition-colors duration-300;
+  }
+  
+  /* Global smooth transitions for themed elements */
+  *, *::before, *::after {
+    border-color: var(--border-primary);
+  }
+}
+
+/* 3. Article Content Styling */
+.blog-content {
+  @apply mx-auto;
+}
+
+.blog-content h2, .blog-content h3 {
+  @apply scroll-mt-32;
+}
+
+.blog-content p {
+  @apply mb-8 last:mb-0;
+}
+
+.blog-content img {
+  @apply transition-transform duration-500 hover:scale-[1.02];
+}
+
+/* Custom list styling if prose defaults aren't enough */
+.blog-content ul {
+  @apply space-y-3 mb-8;
+}
+
+.blog-content li {
+  @apply relative pl-2;
+}
+
+/* 4. Smooth scrolling for the whole app */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 5. Magazine-specific animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* Animated underline for title hover (global) */
+.mag-title-hover {
+  position: relative;
+  display: inline;
+}
+.mag-title-hover::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #dc2626;
+  transition: width 0.3s ease;
+}
+.mag-title-hover:hover::after {
+  width: 100%;
+}
+
+/* Scrollbar styles for Most Read section */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

@@ -1,5 +1,5 @@
 import CollapsibleWidget from './CollapsibleWidget';
-import { supabase } from '../../supabase';
+import { supabase } from '@/lib/supabase';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -34,7 +34,7 @@ async function fetchStartupNews() {
     
     return (data || []).map(item => ({
       title: item.title || 'Startup Update',
-      source: item.source_name || 'Verbis Ecosystem',
+      source: item.source_name || 'StartEJ Ecosystem',
       pubDate: item.published_at || '',
     }));
   } catch (error) {

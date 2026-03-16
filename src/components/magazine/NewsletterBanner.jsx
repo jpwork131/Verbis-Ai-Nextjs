@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Send, Mail } from "lucide-react";
-import { subscribeToNewsletter } from "../../api/magazine";
+import { subscribeToNewsletter } from '@/services/magazine';
 import toast from "react-hot-toast";
 
 export default function NewsletterBanner() {
@@ -33,7 +33,7 @@ export default function NewsletterBanner() {
               <div className="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
                 <Mail size={20} className="text-white" />
               </div>
-              <span className="font-serif font-black text-2xl tracking-tight">Verbis AI</span>
+              <span className="font-serif font-black text-2xl tracking-tight">StartEJ</span>
             </div>
             <h2 className="font-serif font-black text-3xl md:text-4xl text-white mb-3 leading-tight">
               Stay Ahead of the Curve.

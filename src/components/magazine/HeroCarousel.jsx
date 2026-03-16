@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, MessageSquare, Eye, Clock } from "lucide-react";
-import { getFeaturedPosts, getLatestPosts } from "../../api/magazine";
+import { getFeaturedPosts, getLatestPosts } from '@/services/magazine';
 
 function SkeletonRow() {
   return (

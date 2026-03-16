@@ -1,5 +1,5 @@
-import ArticleDetail from '@/views/ArticleDetail';
-import { supabase } from '@/supabase';
+import ArticleDetail from '@/components/views/ArticleDetail';
+import { supabase } from '@/lib/supabase';
 import MarketNewsWidget from '@/components/magazine/MarketNewsWidget';
 import StartupEcosystemWidget from '@/components/magazine/StartupEcosystemWidget';
 
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }) {
           title,
           description: summary,
           url: `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/${article.category}/${slug}`,
-          siteName: 'VERBIS AI News',
+          siteName: 'StartEJ News',
           images: [
             {
               url: imageUrl,
@@ -79,9 +79,6 @@ export async function generateMetadata({ params }) {
 
 export default function Page() {
   return (
-    <ArticleDetail
-      marketNewsWidget={<MarketNewsWidget />}
-      startupWidget={<StartupEcosystemWidget />}
-    />
+    <ArticleDetail />
   );
 }

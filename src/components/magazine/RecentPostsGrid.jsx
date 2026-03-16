@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Clock, User, ChevronDown } from "lucide-react";
-import { getRecentPosts } from "../../api/magazine";
+import { getRecentPosts } from '@/services/magazine';
 
 export default function RecentPostsGrid() {
   const [posts, setPosts] = useState([]);

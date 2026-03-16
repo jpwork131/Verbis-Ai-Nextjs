@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Clock, User, Facebook, Twitter, Youtube, Send, ChevronRight, Mail } from "lucide-react";
-import { getEditorsPicks, getSocialStats, subscribeToNewsletter } from "../../api/magazine";
+import { getEditorsPicks, getSocialStats, subscribeToNewsletter } from '@/services/magazine';
 import toast from "react-hot-toast";
 
 function PostCard({ post, index }) {

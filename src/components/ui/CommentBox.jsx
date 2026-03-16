@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { commentArticle, deleteComment, likeComment } from "../../api/articles";
-import useLoginCheck from "../../hooks/LoginCheck";
+import { commentArticle, deleteComment, likeComment } from '@/services/articles';
+import useLoginCheck from '@/hooks/LoginCheck';
 import { MessageSquare, Send, ChevronDown, ChevronUp } from "lucide-react";
 import Comment from "./Comment";
 

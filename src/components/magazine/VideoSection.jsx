@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Play, Clock } from "lucide-react";
-import { getVideos } from "../../api/magazine";
+import { getVideos } from '@/services/magazine';
 
 export default function VideoSection() {
   const [videos, setVideos] = useState([]);

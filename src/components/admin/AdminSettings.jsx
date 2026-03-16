@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
-import { assetApi } from '../../api/assets';
-import { settingsApi } from '../../api/settings';
-import { apiKeysApi, checkLiveUsage } from '../../api/apiKeys';
+import { assetApi } from '@/services/assets';
+import { settingsApi } from '@/services/settings';
+import { apiKeysApi, checkLiveUsage } from '@/services/apiKeys';
 import toast from 'react-hot-toast';
-import { useBranding } from '../../context/BrandingContext';
+import { useBranding } from '@/contexts/BrandingContext';
 import { Save, Cpu, ImageIcon, Zap, ExternalLink, Globe, ShieldCheck, Terminal, HardDrive, RefreshCcw, Loader2 } from 'lucide-react';
 
 const SystemSettings = () => {
@@ -501,6 +501,8 @@ key_three_here`}
                 >
                   <option value="openrouter">OpenRouter (Default)</option>
                   <option value="google_gemini">Google Gemini (Direct)</option>
+                  <option value="groq">Groq (Llama-3/Mixtral)</option>
+                  <option value="random">Randomized (OR/Gemini/Groq Failover)</option>
                   <option value="disabled">Disabled (Do not rewrite)</option>
                 </select>
               </div>
@@ -655,9 +657,10 @@ key_three_here`}
                       onChange={e => setKeyForm({ ...keyForm, [f]: e.target.value })}
                       className="w-full border border-border p-3 rounded-lg bg-surface"
                     >
-                      <option value="gnews">GNews</option>
                       <option value="openrouter">OpenRouter</option>
                       <option value="google_gemini">Google Gemini</option>
+                      <option value="groq">Groq</option>
+                      <option value="gnews">GNews</option>
                       <option value="cloudinary">Cloudinary</option>
                       <option value="openai">OpenAI</option>
                       <option value="custom">Custom...</option>

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { getBusinessPosts } from "../../api/magazine";
+import { getBusinessPosts } from '@/services/magazine';
 
 export default function BusinessSection() {
   const [posts, setPosts] = useState([]);

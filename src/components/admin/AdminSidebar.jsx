@@ -12,7 +12,7 @@ import {
   Sun,
   Moon
 } from "lucide-react";
-import { logoutUser } from "../../api/auth";
+import { logoutUser } from '@/services/auth';
 import { useRouter as useNavigate } from 'next/navigation';
 
 const Sidebar = ({ activeTab, setActiveTab, counts = {}, isDark, toggleTheme }) => {
@@ -53,7 +53,7 @@ const Sidebar = ({ activeTab, setActiveTab, counts = {}, isDark, toggleTheme }) 
             <Terminal size={20} />
           </div>
           <h1 className="text-xl font-black tracking-tighter text-ink">
-            verbis<span className="text-accent italic">.</span>
+            startej<span className="text-accent italic">.</span>
           </h1>
         </div>
 

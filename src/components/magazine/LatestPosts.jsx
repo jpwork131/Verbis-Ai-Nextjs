@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronRight, Clock, User } from "lucide-react";
-import { getLatestPosts } from "../../api/magazine";
+import { getLatestPosts } from '@/services/magazine';
 
 export default function LatestPosts() {
   const [posts, setPosts] = useState([]);
@@ -147,7 +147,7 @@ export default function LatestPosts() {
               <div className="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-red-500 opacity-50" />
               <div className="absolute -right-2 -top-4 w-20 h-20 rounded-full bg-red-700 opacity-30" />
               <div className="relative z-10">
-                <div className="font-black text-2xl font-serif mb-2">Verbis AI</div>
+                <div className="font-black text-2xl font-serif mb-2">StartEJ</div>
                 <p className="text-red-100 text-xs mb-5 leading-relaxed">
                   The smartest way to stay informed. AI-curated news, every day.
                 </p>

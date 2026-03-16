@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getBreakingNewsPosts } from "../../api/magazine";
+import { getBreakingNewsPosts } from '@/services/magazine';
 
 export default function BreakingNewsTicker() {
   const [posts, setPosts] = useState([]);

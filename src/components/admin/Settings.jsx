@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Save, RefreshCw, AlertCircle, ShieldAlert, Terminal, Clock } from "lucide-react";
-import { settingsApi } from "../../api/settings"; 
+import { settingsApi } from '../../services/settings'; 
 
 const SettingsForm = ({ currentSettings, onUpdate }) => {
   const [loading, setLoading] = useState(false);

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { X, Save, Loader2, List, Plus, Newspaper, Layout, ImageIcon, Search, Settings, Globe, FileText, Terminal, Hash } from "lucide-react";
-import { getCategories } from "../../api/articles";
+import { getCategories } from '@/services/articles';
 
 const EditArticleDrawer = ({ 
   isOpen, 

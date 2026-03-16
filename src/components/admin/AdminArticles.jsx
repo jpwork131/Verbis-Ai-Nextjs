@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useCallback } from "react";
 import { Plus, Search, Filter, ArrowUpDown, Zap, Terminal, CheckCircle, AlertCircle, ChevronLeft, ChevronRight } from "lucide-react";
-import * as articleApi from "../../api/articles";
+import * as articleApi from '@/services/articles';
 import EditArticleDrawer from "./EditArticleDrawer";
 import CreateAIArticleModal from "./CreateAIArticleModal"; // Corrected typo
 import ArticleTable from "./ArticleTable";

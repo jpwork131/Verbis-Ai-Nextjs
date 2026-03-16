@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Send, BookOpen } from "lucide-react";
-import { subscribeToNewsletter } from "../../api/magazine";
+import { subscribeToNewsletter } from '@/services/magazine';
 import toast from "react-hot-toast";
 
 export default function BlogStoriesCTA() {

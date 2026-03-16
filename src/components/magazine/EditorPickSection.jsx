@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Calendar, Facebook, Twitter, Youtube, Instagram } from "lucide-react";
+import { Calendar, Facebook, Twitter, Youtube, Instagram, Send } from "lucide-react";
 import { getCategoryColor } from "./EntrackrCard";
 
 // ── Social follow card ───────────────────────────────────────────────
@@ -11,7 +11,7 @@ const socialPlatforms = [
     count: "23k",
     label: "Likes",
     color: "#1877F2",
-    bg: "#EBF3FF",
+    bg: "rgba(24, 119, 242, 0.1)",
   },
   {
     name: "X",
@@ -23,7 +23,7 @@ const socialPlatforms = [
     count: "56k",
     label: "Followers",
     color: "#000000",
-    bg: "#F2F2F2",
+    bg: "rgba(0, 0, 0, 0.1)",
   },
   {
     name: "Youtube",
@@ -31,7 +31,7 @@ const socialPlatforms = [
     count: "56k",
     label: "Subscribe",
     color: "#FF0000",
-    bg: "#FFF0F0",
+    bg: "rgba(255, 0, 0, 0.1)",
   },
   {
     name: "Spotify",
@@ -49,7 +49,7 @@ const socialPlatforms = [
     count: "14k",
     label: "Followers",
     color: "#1DB954",
-    bg: "#EDFBF1",
+    bg: "rgba(29, 185, 84, 0.1)",
   },
   {
     name: "Instagram",
@@ -57,7 +57,7 @@ const socialPlatforms = [
     count: "5m",
     label: "Followers",
     color: "#E1306C",
-    bg: "#FFF0F5",
+    bg: "rgba(225, 48, 108, 0.1)",
   },
   {
     name: "Pinterest",
@@ -75,7 +75,7 @@ const socialPlatforms = [
     count: "59k",
     label: "Followers",
     color: "#E60023",
-    bg: "#FFF0F0",
+    bg: "rgba(230, 0, 35, 0.1)",
   },
 ];
 
@@ -86,8 +86,7 @@ function SocialCard({ platform }) {
       href={platform.url || "#"}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-3 rounded-xl px-4 py-3 cursor-pointer hover:shadow-lg transition-all duration-300 group no-underline"
-      style={{ backgroundColor: platform.bg || '#F3F4F6', border: `1px solid ${platform.color || '#CBD5E1'}22` }}
+      className="flex items-center gap-3 rounded-xl px-4 py-3 cursor-pointer hover:shadow-lg transition-all duration-300 group no-underline bg-card-bg border border-border-primary"
       onMouseEnter={(e) => {
         e.currentTarget.style.backgroundColor = platform.color;
         e.currentTarget.querySelectorAll('.social-text').forEach(el => el.style.color = 'white');
@@ -95,23 +94,21 @@ function SocialCard({ platform }) {
         e.currentTarget.querySelector('.social-icon').style.color = 'white';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = platform.bg || '#F3F4F6';
-        e.currentTarget.querySelector('.social-name').style.color = '#111827';
-        e.currentTarget.querySelector('.social-count').style.color = platform.color || '#64748B';
-        e.currentTarget.querySelector('.social-icon-bg').style.backgroundColor = (platform.color || '#CBD5E1') + '18';
-        e.currentTarget.querySelector('.social-icon').style.color = platform.color || '#64748B';
+        e.currentTarget.style.backgroundColor = '';
+        e.currentTarget.querySelectorAll('.social-text').forEach(el => el.style.color = '');
+        e.currentTarget.querySelector('.social-icon-bg').style.backgroundColor = '';
+        e.currentTarget.querySelector('.social-icon').style.color = platform.color;
       }}
     >
       <div
-        className="social-icon-bg w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
-        style={{ backgroundColor: `${platform.color || '#CBD5E1'}18` }}
+        className="social-icon-bg w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 bg-bg-primary/10"
       >
-        <Icon className="social-icon transition-colors duration-300" size={18} color={platform.color || '#64748B'} />
+        <Icon className="social-icon transition-colors duration-300" size={18} style={{ color: platform.color }} />
       </div>
       <div className="min-w-0">
-        <div className="social-text social-name font-bold text-[13px] text-gray-900 truncate capitalize transition-colors duration-300">{platform.name}</div>
-        <div className="social-text social-count text-[11px] transition-colors duration-300" style={{ color: platform.color || '#64748B' }}>
-          {platform.follower_count ? `${(platform.follower_count / 1000).toFixed(1)}k` : '0'} {platform.label || 'Followers'}
+        <div className="social-text social-name font-bold text-[13px] text-text-primary truncate capitalize transition-colors duration-300">{platform.name}</div>
+        <div className="social-text social-count text-[11px] text-text-primary/40 transition-colors duration-300">
+          {platform.follower_count ? `${(platform.follower_count / 1000).toFixed(1)}k` : platform.count} {platform.label || 'Followers'}
         </div>
       </div>
     </a>
@@ -141,24 +138,24 @@ function MiniArticleCard({ article }) {
       <div className="mt-3">
         <span
           className="inline-block px-2.5 py-[3px] rounded text-[10px] font-[700] uppercase tracking-wide mb-2"
-          style={{ backgroundColor: catColor.bg, color: catColor.text }}
+          style={{ backgroundColor: article.categoryColor || catColor.bg, color: catColor.text }}
         >
           {cat}
         </span>
-        <h4 className="font-bold text-[14px] text-gray-900 leading-snug line-clamp-2 group-hover:text-[var(--color-accent)] transition-colors">
+        <h4 className="font-bold text-[14px] text-text-primary leading-snug line-clamp-2 group-hover:text-accent transition-colors">
           {article.title}
         </h4>
-        <div className="flex items-center gap-2 text-[11px] text-gray-400 mt-1.5">
+        <div className="flex items-center gap-2 text-[11px] text-text-primary/40 mt-1.5">
           <span>
             by{" "}
-            <strong className="text-gray-600">
+            <strong className="text-text-primary/70">
               {article.author?.name || "Editorial"}
             </strong>
           </span>
           <span>–</span>
           <span>
             {(() => {
-              const d = new Date(article.created_at || article.published_at);
+              const d = new Date(article.published_at || article.created_at);
               if (isNaN(d.getTime())) return "Recently";
               return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
             })()}
@@ -178,23 +175,23 @@ export default function EditorPickSection({ articles = [], socialStats = [], loa
     return (
       <section className="mb-12">
         <div className="flex items-center mb-6">
-          <h2 className="font-display text-[22px] font-bold text-gray-900 mr-3 whitespace-nowrap">
+          <h2 className="font-display text-[22px] font-bold text-text-primary mr-3 whitespace-nowrap">
             Editor's Pick
           </h2>
-          <div className="flex-1 border-t-2 border-dashed border-gray-200" />
+          <div className="flex-1 border-t-2 border-dashed border-border-primary" />
         </div>
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex-1 space-y-5">
-            <div className="h-[320px] bg-slate-200 animate-pulse rounded-2xl" />
+            <div className="h-[320px] bg-card-bg animate-pulse rounded-2xl" />
             <div className="grid grid-cols-3 gap-4">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="h-[180px] bg-slate-200 animate-pulse rounded-xl" />
+                <div key={i} className="h-[180px] bg-card-bg animate-pulse rounded-xl" />
               ))}
             </div>
           </div>
           <div className="w-full lg:w-[280px] space-y-3">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="h-[54px] bg-slate-200 animate-pulse rounded-xl" />
+              <div key={i} className="h-[54px] bg-card-bg animate-pulse rounded-xl" />
             ))}
           </div>
         </div>
@@ -212,10 +209,10 @@ export default function EditorPickSection({ articles = [], socialStats = [], loa
     <section className="mb-12">
       {/* Section header */}
       <div className="flex items-center mb-6">
-        <h2 className="font-display text-[22px] font-bold text-gray-900 mr-3 whitespace-nowrap">
+        <h2 className="font-display text-[22px] font-bold text-text-primary mr-3 whitespace-nowrap">
           Editor's Pick
         </h2>
-        <div className="flex-1 border-t-2 border-dashed border-gray-200" />
+        <div className="flex-1 border-t-2 border-dashed border-border-primary" />
       </div>
 
       <div className="flex flex-col xl:flex-row gap-8">
@@ -224,37 +221,41 @@ export default function EditorPickSection({ articles = [], socialStats = [], loa
           {/* Hero article */}
           <Link
             href={heroSlug}
-            className="group relative block overflow-hidden rounded-2xl aspect-[16/9] mb-6 cursor-pointer"
+            className="group block sm:relative sm:overflow-hidden sm:aspect-[16/9] mb-8 cursor-pointer rounded-2xl sm:border sm:border-border-primary"
           >
-            <img
-              src={
-                hero.banner_image ||
-                "https://via.placeholder.com/800x450?text=Editor%27s+Pick"
-              }
-              alt={hero.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-              loading="lazy"
-            />
-            {/* Overlay card */}
-            <div className="absolute bottom-0 right-0 m-5 bg-white rounded-2xl shadow-xl p-5 max-w-[55%]">
+            {/* Image Wrapper */}
+            <div className="relative overflow-hidden rounded-2xl aspect-[16/9] sm:absolute sm:inset-0 sm:aspect-auto sm:rounded-none">
+              <img
+                src={
+                  hero.banner_image ||
+                  "https://via.placeholder.com/800x450?text=Editor%27s+Pick"
+                }
+                alt={hero.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Content card (Below on mobile, Overlapping on Desktop) */}
+            <div className="relative sm:absolute sm:bottom-6 sm:right-6 mt-4 sm:mt-0 bg-card-bg sm:bg-card-bg/95 backdrop-blur-sm rounded-2xl sm:rounded-lg shadow-xl sm:shadow-2xl p-6 sm:p-4 w-full sm:w-auto sm:max-w-[42%] border border-border-primary/50 transition-all duration-300 z-10">
               <span
-                className="inline-block px-2.5 py-[3px] rounded text-[10px] font-[700] uppercase tracking-wide mb-3"
-                style={{ backgroundColor: heroCatColor.bg, color: heroCatColor.text }}
+                className="inline-block px-2.5 py-[3px] rounded text-[10px] font-[700] uppercase tracking-wide mb-3 sm:mb-2"
+                style={{ backgroundColor: hero.categoryColor || heroCatColor.bg, color: heroCatColor.text }}
               >
                 {heroCat}
               </span>
-              <h3 className="font-bold text-[18px] text-gray-900 leading-tight line-clamp-3 group-hover:text-[var(--color-accent)] transition-colors mb-2">
+              <h3 className="font-bold text-[18px] sm:text-[16px] text-text-primary leading-tight line-clamp-2 group-hover:text-accent transition-colors mb-3 sm:mb-2">
                 {hero.title}
               </h3>
               {hero.summary && (
-                <p className="text-[12px] text-gray-500 line-clamp-2 mb-3">
+                <p className="text-[13px] sm:text-[12px] text-text-primary/60 line-clamp-2 mb-4 sm:mb-3">
                   {hero.summary}
                 </p>
               )}
-              <div className="flex items-center gap-2 text-[11px] text-gray-400">
+              <div className="flex items-center gap-2 text-[11px] text-text-primary/40">
                 <span>
                   by{" "}
-                  <strong className="text-[var(--color-accent)]">
+                  <strong className="text-accent">
                     {hero.author?.name || "Editorial"}
                   </strong>
                 </span>
@@ -262,7 +263,7 @@ export default function EditorPickSection({ articles = [], socialStats = [], loa
                 <span className="flex items-center gap-1">
                   <Calendar size={11} />
                   {(() => {
-                    const d = new Date(hero.created_at || hero.published_at);
+                    const d = new Date(hero.published_at || hero.created_at);
                     if (isNaN(d.getTime())) return "Recently";
                     return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
                   })()}
@@ -284,22 +285,22 @@ export default function EditorPickSection({ articles = [], socialStats = [], loa
           {/* Follow Us */}
           <div className="mb-6">
             <div className="flex items-center mb-4">
-              <h3 className="font-display text-[18px] font-bold text-gray-900 mr-3 whitespace-nowrap">
+              <h3 className="font-display text-[18px] font-bold text-text-primary mr-3 whitespace-nowrap">
                 Follow Us
               </h3>
-              <div className="flex-1 border-t-2 border-dashed border-gray-200" />
+              <div className="flex-1 border-t-2 border-dashed border-border-primary" />
             </div>
             <div className="grid grid-cols-2 gap-2.5">
               {socialStats.length > 0 ? (
                 socialStats.slice(0, 6).map((stat) => {
                   const platformConfig = [
-                    { name: 'facebook', icon: Facebook, color: '#1877F2', bg: '#EBF3FF', label: 'Likes' },
-                    { name: 'twitter', icon: socialPlatforms[1].icon, color: '#000000', bg: '#F2F2F2', label: 'Followers' },
-                    { name: 'x', icon: socialPlatforms[1].icon, color: '#000000', bg: '#F2F2F2', label: 'Followers' },
-                    { name: 'youtube', icon: Youtube, color: '#FF0000', bg: '#FFF0F0', label: 'Subscribe' },
-                    { name: 'instagram', icon: Instagram, color: '#E1306C', bg: '#FFF0F5', label: 'Followers' },
-                    { name: 'pinterest', icon: socialPlatforms[5].icon, color: '#E60023', bg: '#FFF0F0', label: 'Followers' },
-                  ].find(p => p.name === stat.platform.toLowerCase()) || { name: stat.platform, icon: Send, color: '#64748B', bg: '#F3F4F6', label: 'Followers' };
+                    { name: 'facebook', icon: Facebook, color: '#1877F2', bg: 'rgba(24, 119, 242, 0.1)', label: 'Likes' },
+                    { name: 'twitter', icon: socialPlatforms[1].icon, color: '#000000', bg: 'rgba(0, 0, 0, 0.1)', label: 'Followers' },
+                    { name: 'x', icon: socialPlatforms[1].icon, color: '#000000', bg: 'rgba(0, 0, 0, 0.1)', label: 'Followers' },
+                    { name: 'youtube', icon: Youtube, color: '#FF0000', bg: 'rgba(255, 0, 0, 0.1)', label: 'Subscribe' },
+                    { name: 'instagram', icon: Instagram, color: '#E1306C', bg: 'rgba(225, 48, 108, 0.1)', label: 'Followers' },
+                    { name: 'pinterest', icon: socialPlatforms[5].icon, color: '#E60023', bg: 'rgba(230, 0, 35, 0.1)', label: 'Followers' },
+                  ].find(p => p.name === stat.platform.toLowerCase()) || { name: stat.platform, icon: Send, color: '#64748B', bg: 'rgba(100, 116, 139, 0.1)', label: 'Followers' };
 
                   return (
                     <SocialCard 
@@ -321,28 +322,28 @@ export default function EditorPickSection({ articles = [], socialStats = [], loa
           </div>
 
           {/* Author / About Me card */}
-          <div className="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100 shadow-sm">
+          <div className="bg-card-bg rounded-2xl p-6 text-center border border-border-primary shadow-sm hover:shadow-md transition-all duration-300">
             <div
-              className="w-[72px] h-[72px] rounded-full mx-auto mb-4 flex items-center justify-center text-3xl"
+              className="w-[72px] h-[72px] rounded-full mx-auto mb-4 flex items-center justify-center text-3xl shadow-lg"
               style={{
                 background: "linear-gradient(135deg, #F59E0B 60%, #EF4444 100%)",
               }}
             >
               <span>✍️</span>
             </div>
-            <h4 className="font-bold text-[17px] text-gray-900 mb-2">
-              About Verbis AI
+            <h4 className="font-bold text-[17px] text-text-primary mb-2">
+              About StartEJ
             </h4>
-            <p className="text-[12px] text-gray-500 leading-relaxed mb-4">
+            <p className="text-[12px] text-text-primary/60 leading-relaxed mb-4">
               Curating the best in startup news, funding rounds, and tech
               innovation — powered by AI.{" "}
-              <span className="text-[var(--color-accent)] font-semibold">
+              <span className="text-accent font-semibold">
                 Stay ahead of the curve.
               </span>
             </p>
             <Link
               href="/about"
-              className="inline-block px-6 py-2 rounded-full text-[13px] font-bold text-white transition-all hover:brightness-110 hover:scale-105"
+              className="inline-block px-6 py-2 rounded-full text-[13px] font-bold text-white transition-all hover:brightness-110 hover:scale-105 shadow-md shadow-accent/20"
               style={{
                 background:
                   "linear-gradient(90deg, #2563EB 0%, var(--color-accent) 100%)",

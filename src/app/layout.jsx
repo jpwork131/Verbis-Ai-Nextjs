@@ -1,11 +1,11 @@
-import '@/theme/main.css';
-import '@/theme/App.css';
-import '@/theme/verbis.css';
-import ClientProviders from './ClientProviders.jsx';
+import '../styles/main.css';
+import '../styles/App.css';
+import '../styles/startej.css';
+import ClientProviders from '@/providers/ClientProviders';
 
 export const metadata = {
-  title: 'AI News | Future of Tech',
-  description: 'AI-generated news on the latest tech trends',
+  title: 'StartEJ | Startup News & Tech Intelligence',
+  description: 'AI-powered news, funding alerts, and ecosystem insights from StartEJ.com.',
 };
 
 export default function RootLayout({ children }) {

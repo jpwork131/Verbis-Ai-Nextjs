@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { X, Zap, Globe, Loader2, Link as LinkIcon, Database, Terminal, Type } from "lucide-react";
-import { getCategories } from "../../api/articles";
+import { getCategories } from '@/services/articles';
 
 const CreateAIArticleModal = ({ isOpen, onClose, onCreate, loading }) => {
   const initialForm = { 

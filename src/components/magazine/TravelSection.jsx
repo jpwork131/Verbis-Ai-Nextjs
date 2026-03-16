@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { MapPin, ChevronRight, Clock } from "lucide-react";
-import { getTravelPosts } from "../../api/magazine";
+import { getTravelPosts } from '@/services/magazine';
 
 export default function TravelSection() {
   const [posts, setPosts] = useState([]);

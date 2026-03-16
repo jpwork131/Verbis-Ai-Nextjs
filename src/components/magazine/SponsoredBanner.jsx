@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import { getActiveBanner } from "../../api/magazine";
+import { getActiveBanner } from '@/services/magazine';
 
 export default function SponsoredBanner() {
   const [banner, setBanner] = useState(null);

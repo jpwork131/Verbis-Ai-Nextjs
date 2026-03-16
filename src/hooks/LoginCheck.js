@@ -1,5 +1,5 @@
-import { likeArticle } from "../api/articles";
-import { useAuthModal } from "../context/AuthModalContext";
+import { likeArticle } from '@/services/articles';
+import { useAuthModal } from '@/contexts/AuthModalContext';
 
 const useloginCheck = () => {
   const { openModal } = useAuthModal();
